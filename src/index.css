@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Share Tech Mono', monospace;
+    background-color: #0D1117;
+    color: #8B949E;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .glow-blue {
+    color: #00A8FF;
+    text-shadow: 0 0 8px #00A8FF, 0 0 16px #00A8FF40, 0 0 24px #00A8FF20;
+  }
+  
+  .glow-red {
+    color: #D70040;
+    text-shadow: 0 0 8px #D70040, 0 0 16px #D7004040, 0 0 24px #D7004020;
+  }
+  
+  .glow-box-blue {
+    box-shadow: 0 0 12px #00A8FF40, inset 0 0 12px #00A8FF10;
+    border: 1px solid #00A8FF60;
+  }
+  
+  .glow-box-red {
+    box-shadow: 0 0 12px #D7004040, inset 0 0 12px #D7004010;
+    border: 1px solid #D7004060;
+  }
+  
+  .scanlines {
+    position: relative;
+  }
+  
+  .scanlines::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 168, 255, 0.03) 2px,
+      rgba(0, 168, 255, 0.03) 4px
+    );
+    pointer-events: none;
+  }
+  
+  .system-button {
+    @apply bg-transparent border border-[#00A8FF] text-[#00A8FF] px-6 py-3 transition-all duration-300 hover:bg-[#00A8FF] hover:text-black hover:shadow-lg;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+  }
+  
+  .system-window {
+    @apply bg-[#161B22] border border-[#30363D] backdrop-blur-sm;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+  
+  .terminal-text {
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 0.5px;
+  }
+  
+  .pulse-ring {
+    animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  }
+  
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(0.33);
+    }
+    40%, 50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.2);
+    }
+  }
+  
+  .typing {
+    animation: typing 2s steps(20) infinite;
+  }
+  
+  @keyframes typing {
+    0%, 50% {
+      opacity: 1;
+    }
+    51%, 100% {
+      opacity: 0;
+    }
+  }
+  
+  .level-up-animation {
+    animation: level-up 1s ease-out;
+  }
+  
+  @keyframes level-up {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 10px currentColor;
+  }
+  
+  .border-glow {
+    box-shadow: 0 0 20px rgba(0, 168, 255, 0.3);
+  }
+}
